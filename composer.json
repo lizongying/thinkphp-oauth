@@ -1,0 +1,24 @@
+{
+    "name": "lizongying/thinkphp-oauth2.0",
+    "description": "A oAuth2.0 for ThinkPHP3.2",
+    "type": "module",
+    "keywords": ["thinkphp","oAuth"],
+    "homepage": "https://github.com/lizongying/thinkphp-oauth2.0",
+    "license": "Apache2",
+    "authors": [
+        {
+            "name": "lizongying",
+            "email": "lizongying@msn.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "minimum-stability": "dev",
+	"repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/lizongying/thinkphp-oauth2.0"
+		}
+	]
+}
