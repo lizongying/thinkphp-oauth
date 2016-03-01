@@ -3,7 +3,7 @@
     "description": "A oAuth2.0 for ThinkPHP3.2",
     "type": "module",
     "keywords": ["thinkphp","oAuth"],
-    "homepage": "https://github.com/lizongying/thinkphp-oauth2.0",
+    "homepage": "http://lizongying.github.io/thinkphp-oauth2.0",
     "license": "Apache2",
     "authors": [
         {
@@ -20,5 +20,8 @@
 			"type": "git",
 			"url": "https://github.com/lizongying/thinkphp-oauth2.0"
 		}
-	]
+	],
+	"autoload": {
+        "psr-4": {"OAuth2\\Server": "src/"}
+    }
 }
