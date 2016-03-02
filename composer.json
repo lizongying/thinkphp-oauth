@@ -14,6 +14,11 @@
     "require": {
         "php": ">=5.4.0"
     },
+	"autoload": {
+        "psr-4": {
+            "Thinkphp\\Test\\": "src/Thinkphp/Test"
+        }
+    },
     "minimum-stability": "dev",
 	"repositories": [
 		{
