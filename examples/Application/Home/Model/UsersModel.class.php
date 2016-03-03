@@ -9,30 +9,33 @@ use Think\Model;
 
 class UsersModel extends Model
 {
+    /**
+     * @param null $username
+     * @return bool|mixed
+     */
     public function select($username = null)
     {
-        $where = array();
         if ($username !== null) {
-            $where = array('username'=>$username);
+            return false;
         }
 
         $result = M('users')
             ->field('username, password, name, email, photo')
-            ->where($where)
+            ->where(['username'=>$username])
             ->select();
 
-        if (count($result) > 0) {
-            return $result;
+        if (!$result || count($result) === 0) {
+            return false;
         }
 
-        return;
+        return $result;
     }
 
 
     // 自动验证设置
     protected $_validate = array(
         array('username', 'require', '用户名必须填写！', 1),
-        array('name', 'require', '性名必须填写！', 1),
+        array('name', 'require', '姓名必须填写！', 1),
         array('email', 'email', '邮箱格式错误！', 2),
         array('username', '', '用户名已经存在！', 0, 'unique', 1),
     );

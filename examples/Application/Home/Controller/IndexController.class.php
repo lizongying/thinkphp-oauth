@@ -19,7 +19,7 @@ class IndexController extends Controller
 	{
   		header('Content-type:text/html;charset=utf-8');
   		echo '<a href="/home/index/addToken">增加access_token</a>'.'<br>';
-  		echo '<a href="/home/index/test">测试表单到api</a>'.'<br>';
+  		echo '<a href="/home/index/test">测试api</a>'.'<br>';
   		echo '<a href="/home/api/tokeninfo?access_token=iamming">获取令牌信息</a>'.'<br>';
   		echo '<a href="/home/api/users?access_token=iamming">获取所有用户信息</a>'.'<br>';
   		echo '<a href="/home/api/users/xiaoming?access_token=iamming">获取指定用户信息</a>'.'<br>';
