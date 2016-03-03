@@ -1,0 +1,5 @@
+{
+    "require": {
+        "league/oauth2-server": "^4.1"
+    }
+}
