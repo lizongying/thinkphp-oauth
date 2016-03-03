@@ -17,8 +17,8 @@ class AuthCodeStorage extends AbstractStorage implements AuthCodeInterface
         $where['auth_code'] = array('eq', $code);
         $where['expire_time'] = array('egt', time());
         $result = M('oauth_auth_codes')
-                            ->where($where)
-                            ->select();
+            ->where($where)
+            ->select();
 
         if (count($result) === 1) {
             $token = new AuthCodeEntity($this->server);
@@ -35,12 +35,12 @@ class AuthCodeStorage extends AbstractStorage implements AuthCodeInterface
     public function create($token, $expireTime, $sessionId, $redirectUri)
     {
         M('oauth_auth_codes')
-                    ->add(array(
-                        'auth_code'     =>  $token,
-                        'client_redirect_uri'  =>  $redirectUri,
-                        'session_id'    =>  $sessionId,
-                        'expire_time'   =>  $expireTime,
-                    ));
+            ->add(array(
+                'auth_code' => $token,
+                'client_redirect_uri' => $redirectUri,
+                'session_id' => $sessionId,
+                'expire_time' => $expireTime,
+            ));
     }
 
     /**
@@ -49,18 +49,18 @@ class AuthCodeStorage extends AbstractStorage implements AuthCodeInterface
     public function getScopes(AuthCodeEntity $token)
     {
         $result = M('oauth_auth_code_scopes')
-                                    ->field('oauth_scopes.id, oauth_scopes.description')
-                                    ->join('LEFT JOIN oauth_scopes ON oauth_auth_code_scopes.scope = oauth_scopes.id')
-                                    ->where(array('auth_code'=>$token->getId()))
-                                    ->select();
+            ->field('oauth_scopes.id, oauth_scopes.description')
+            ->join('LEFT JOIN oauth_scopes ON oauth_auth_code_scopes.scope = oauth_scopes.id')
+            ->where(array('auth_code' => $token->getId()))
+            ->select();
 
         $response = [];
 
         if (count($result) > 0) {
             foreach ($result as $row) {
                 $scope = (new ScopeEntity($this->server))->hydrate([
-                    'id'            =>  $row['id'],
-                    'description'   =>  $row['description'],
+                    'id' => $row['id'],
+                    'description' => $row['description'],
                 ]);
                 $response[] = $scope;
             }
@@ -75,10 +75,10 @@ class AuthCodeStorage extends AbstractStorage implements AuthCodeInterface
     public function associateScope(AuthCodeEntity $token, ScopeEntity $scope)
     {
         M('oauth_auth_code_scopes')
-                    ->add(array(
-                        'auth_code' =>  $token->getId(),
-                        'scope'     =>  $scope->getId(),
-                    ));
+            ->add(array(
+                'auth_code' => $token->getId(),
+                'scope' => $scope->getId(),
+            ));
     }
 
     /**
@@ -87,7 +87,7 @@ class AuthCodeStorage extends AbstractStorage implements AuthCodeInterface
     public function delete(AuthCodeEntity $token)
     {
         M('oauth_auth_codes')
-                    ->where(array('auth_code'=>$token->getId()))
-                    ->delete();
+            ->where(array('auth_code' => $token->getId()))
+            ->delete();
     }
 }

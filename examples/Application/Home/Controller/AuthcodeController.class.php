@@ -7,25 +7,25 @@ use Home\Storage;
 
 class AuthcodeController extends Controller {
 
-    //    Â·ÓÉ
+//    è·¯ç”±
     private $__router;
 
-//    ·şÎñÆ÷
+//    æœåŠ¡å™¨
     private $__server;
 
-//    ÇëÇó
+//    è¯·æ±‚
     private $__request;
 
     function __construct()
     {
         parent::__construct();
 
-//        Â·ÓÉÉèÖÃ
+//        è·¯ç”±è®¾ç½®
         $this->__request = (new Request())->createFromGlobals();
         $this->__router = new \Orno\Route\RouteCollection();
         $this->__router->setStrategy(\Orno\Route\RouteStrategyInterface::RESTFUL_STRATEGY);
 
-//        ÉèÖÃÈÏÖ¤·şÎñÆ÷
+//        è®¾ç½®è®¤è¯æœåŠ¡å™¨
         $this->__server = new \League\OAuth2\Server\AuthorizationServer();
         $this->__server->setSessionStorage(new Storage\SessionStorage());
         $this->__server->setAccessTokenStorage(new Storage\AccessTokenStorage());
@@ -45,13 +45,6 @@ class AuthcodeController extends Controller {
         $this->__router = new \Orno\Route\RouteCollection();
     }
 
-    /**
-     * Ä¬ÈÏÊ×Ò³
-     */
-    public function index()
-    {
-
-    }
     private function __getCode()
     {
         $server = $this->__server;
@@ -91,7 +84,7 @@ class AuthcodeController extends Controller {
     }
 
     /**
-     * ·¢·ÅÊÚÈ¨Âë
+     * å‘æ”¾æˆæƒç 
      */
     public function authorize()
     {
@@ -102,7 +95,7 @@ class AuthcodeController extends Controller {
         $router->get('/home/authcode/authorize', function (Request $request) use ($server) {
 
             // First ensure the parameters in the query string are correct
-//            Ê×ÏÈÈ·±£²éÑ¯×Ö·û´®ÖĞµÄ²ÎÊıÊÇÕıÈ·µÄ
+//            é¦–å…ˆç¡®ä¿æŸ¥è¯¢å­—ç¬¦ä¸²ä¸­çš„å‚æ•°æ˜¯æ­£ç¡®çš„
 
             try {
                 $authParams = $server->getGrantType('authorization_code')->checkAuthorizeParams();
@@ -119,7 +112,7 @@ class AuthcodeController extends Controller {
 
 //            $server->$this->setDefaultScope('1 2');
             // Normally at this point you would show the user a sign-in screen and ask them to authorize the requested scopes
-//            Í¨³£ÔÚÕâÒ»µãÉÏÄã»áÏÔÊ¾ÓÃ»§ÔÚÆÁÄ»ÉÏµÄÒ»¸ö±êÖ¾£¬²¢ÒªÇóËûÃÇÊÚÈ¨µÄÒªÇó·¶Î§
+//            é€šå¸¸åœ¨è¿™ä¸€ç‚¹ä¸Šä½ ä¼šæ˜¾ç¤ºç”¨æˆ·åœ¨å±å¹•ä¸Šçš„ä¸€ä¸ªæ ‡å¿—ï¼Œå¹¶è¦æ±‚ä»–ä»¬æˆæƒçš„è¦æ±‚èŒƒå›´
 
             // ...
 
@@ -128,7 +121,7 @@ class AuthcodeController extends Controller {
             // ...
 
             // Create a new authorize request which will respond with a redirect URI that the user will be redirected to
-//            ´´½¨Ò»¸öĞÂµÄÊÚÈ¨ÇëÇó£¬½«ÏìÓ¦Ò»¸öÖØ¶¨ÏòURIµÄÓÃ»§½«±»ÖØ¶¨Ïòµ½
+//            åˆ›å»ºä¸€ä¸ªæ–°çš„æˆæƒè¯·æ±‚ï¼Œå°†å“åº”ä¸€ä¸ªé‡å®šå‘URIçš„ç”¨æˆ·å°†è¢«é‡å®šå‘åˆ°
 
             $redirectUri = $server->getGrantType('authorization_code')->newAuthorizeRequest('user', 1, $authParams);
 
@@ -141,7 +134,7 @@ class AuthcodeController extends Controller {
     }
 
     /**
-     * ·¢ËÍÁîÅÆ
+     * å‘é€ä»¤ç‰Œ
      */
     public function token()
     {

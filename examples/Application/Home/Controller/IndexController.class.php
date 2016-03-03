@@ -24,7 +24,15 @@ class IndexController extends Controller
   		echo '<a href="/home/api/users?access_token=iamming">获取所有用户信息</a>'.'<br>';
   		echo '<a href="/home/api/users/xiaoming?access_token=iamming">获取指定用户信息</a>'.'<br>';
   		echo '<hr>';
-  		echo '<a href="/home/authcode/authorize?client_id=client&redirect_uri=http%3a%2f%2flocalhost%2fredirect&response_type=code">请求验证码</a>'.'<br>';
+		echo 'response_type：表示授权类型，必选项，此处的值固定为code'.'<br>';
+		echo 'client_id：表示客户端的ID，必选项'.'<br>';
+		echo 'redirect_uri：表示重定向URI，可选项'.'<br>';
+		echo 'scope：表示申请的权限范围，可选项'.'<br>';
+		echo 'state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值'.'<br>';
+		echo 'http://localhost/home/authcode/authorize?response_type=code&client_id=client&scope=&state=&redirect_uri='.urlencode('http://localhost/redirect').'<br>';
+  		echo '<a href="/home/authcode/authorize?response_type=code&client_id=client&scope=&state=&redirect_uri='.urlencode('http://localhost/redirect').'">请求授权码</a>';
+
+
     }
 
 	/**
