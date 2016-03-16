@@ -11,9 +11,10 @@ interface RouteStrategyInterface
 {
     /**
      * Types of route strategies
+     * 路由策略
      */
     const REQUEST_RESPONSE_STRATEGY = 0;
-    const RESTFUL_STRATEGY          = 1;
+    const RESTFUL_STRATEGY          = 1;//RESTFUL架构
     const URI_STRATEGY              = 2;
     const METHOD_ARGUMENT_STRATEGY  = 3;
 

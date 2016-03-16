@@ -47,6 +47,7 @@ class Dispatcher extends GroupCountBasedDispatcher implements RouteStrategyInter
 
     /**
      * Match and dispatch a route matching the given http method and uri
+     * 通过给定的http方法、uri去匹配和调度
      *
      * @param  string $method
      * @param  string $uri
@@ -79,6 +80,7 @@ class Dispatcher extends GroupCountBasedDispatcher implements RouteStrategyInter
 
     /**
      * Handle dispatching of a found route
+     * 处理路由
      *
      * @param  string|\Closure                             $handler
      * @param  integer|\Orno\Route\CustomStrategyInterface $strategy

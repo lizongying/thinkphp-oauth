@@ -23,15 +23,16 @@ class ClientStorage extends AbstractStorage implements ClientInterface
 
         $join = '';
         if ($redirectUri) {
-//            $field = 'oauth_clients.*, oauth_client_redirect_uris.*';
             $join = 'LEFT JOIN oauth_client_redirect_uris ON oauth_clients.id = oauth_client_redirect_uris.client_id';
             $where['oauth_client_redirect_uris.redirect_uri'] = array('eq',  $redirectUri);
         }
+
         $result = M('oauth_clients')
             ->field($field)
             ->where($where)
             ->join($join)
             ->select();
+
         if (count($result) === 1) {
             $client = new ClientEntity($this->server);
             $client->hydrate([
@@ -40,7 +41,6 @@ class ClientStorage extends AbstractStorage implements ClientInterface
             ]);
             return $client;
         }
-
 
         return;
     }

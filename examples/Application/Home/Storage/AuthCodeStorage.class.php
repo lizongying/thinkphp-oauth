@@ -44,6 +44,7 @@ class AuthCodeStorage extends AbstractStorage implements AuthCodeInterface
     }
 
     /**
+     * ÊÚÈ¨·¶Î§
      * {@inheritdoc}
      */
     public function getScopes(AuthCodeEntity $token)

@@ -89,7 +89,7 @@ class AuthorizationServer extends AbstractServer
      * Enable support for a grant
      *
      * @param GrantTypeInterface $grantType  A grant class which conforms to Interface/GrantTypeInterface
-     * @param null|string        $identifier An identifier for the grant (autodetected if not passed)
+     * @param null|string        $identifier An identifier for the grant (autodetected if not passed) 设定一个标识符（如果自动授权没有通过）
      *
      * @return self
      */
